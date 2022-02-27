@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: myapplication
+
+cloud:
+    stack:
+      auto: false
+
+message: justAnyLocalMachine

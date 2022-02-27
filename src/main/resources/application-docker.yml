@@ -1,0 +1,8 @@
+cloud:
+  aws:
+    credentials:
+      instance-profile: true
+    region:
+      static: us-east-1
+    stack:
+      auto: false
