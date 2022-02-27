@@ -5,4 +5,4 @@ cloud:
     region:
       static: us-east-1
     stack:
-      auto: false
+      auto: true
