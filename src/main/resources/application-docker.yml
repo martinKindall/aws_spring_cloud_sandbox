@@ -1,3 +1,7 @@
+spring:
+  config:
+    import: "aws-parameterstore:"
+
 cloud:
   aws:
     credentials:

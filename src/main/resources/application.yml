@@ -1,16 +1,10 @@
 spring:
   application:
     name: myapplication
-  config:
-    import: "aws-parameterstore:"
 
 cloud:
   aws:
-    credentials:
-      instance-profile: true
-    region:
-      static: us-east-1
     stack:
-      auto: true
+      auto: false
 
 message: justAnyLocalMachine
