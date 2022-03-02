@@ -4,6 +4,8 @@ Just testing out some features of the https://awspring.io/
 
 - Parameter Store
 
+And also trying [micrometer](https://micrometer.io/) for pushing metrics into Cloudwatch. 
+
 ## How to unpack the JAR for containerization
 
 First, build the project and generate the fat JAR in build/libs (just run gradle).
@@ -42,6 +44,6 @@ As we are not providing the credentials neither in the environment nor as java s
 looking for credentials in other levels. In this example we are using the Instance profile credentials, which under my perspective
 are the safest ones.
 
-__Do not forget__ to assign the appropiate IAM role to the EC2 for reading from the Parameter Store.
-For this basic example the __AmazonSSMReadOnlyAccess__ role is going to be enough, although you will want
-in real life apps a more restricted permission based on the specific path.
+__Do not forget__ to assign the appropiate IAM role to the EC2 for reading from the Parameter Store and for pushing metrics into CloudWatch.
+For this basic example the __AmazonSSMReadOnlyAccess__ plus the __CloudWatchAgentServerPolicy__ roles are going to be enough, although you will want
+ to apply in real life apps the _least privilege permissions_ principle, in case the former policies are too permisive.
