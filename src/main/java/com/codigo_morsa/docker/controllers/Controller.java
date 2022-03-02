@@ -2,6 +2,8 @@ package com.codigo_morsa.docker.controllers;
 
 import com.codigo_morsa.docker.model.Customer;
 import com.codigo_morsa.docker.services.CustomerService;
+import io.micrometer.core.instrument.Counter;
+import io.micrometer.core.instrument.MeterRegistry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,18 +17,22 @@ import java.util.Map;
 
 @RestController
 public class Controller {
+    private final Counter customerViewCounter;
+
     @Value("${message}")
     private String message;
 
     private final CustomerService customerService;
 
     @Autowired
-    public Controller(CustomerService customerService) {
+    public Controller(CustomerService customerService, MeterRegistry meterRegistry) {
         this.customerService = customerService;
+        customerViewCounter = meterRegistry.counter("CUSTOMER.reads");
     }
 
     @GetMapping("/customer")
     public Flux<Customer> getCustomers() {
+        customerViewCounter.increment();
         return customerService.getCustomers();
     }
 
