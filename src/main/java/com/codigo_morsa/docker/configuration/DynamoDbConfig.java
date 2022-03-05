@@ -22,8 +22,7 @@ public class DynamoDbConfig {
                 .build();
     }
 
-    @Bean
-    public DynamoDbAsyncClient getDynamoDbAsyncClient() {
+    private DynamoDbAsyncClient getDynamoDbAsyncClient() {
         return DynamoDbAsyncClient
                 .builder()
                 .region(Region.US_EAST_1)
