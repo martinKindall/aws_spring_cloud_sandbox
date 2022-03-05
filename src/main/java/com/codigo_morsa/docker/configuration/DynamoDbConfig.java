@@ -16,13 +16,14 @@ public class DynamoDbConfig {
     private String dynamoDbUrl;
 
     @Bean
-    public DynamoDbEnhancedAsyncClient getDynamoDbEnhancedClient() {
+    public DynamoDbEnhancedAsyncClient getDynamoDbEnhancedAsyncClient() {
         return DynamoDbEnhancedAsyncClient.builder()
-                .dynamoDbClient(getDynamoDbClient())
+                .dynamoDbClient(getDynamoDbAsyncClient())
                 .build();
     }
 
-    private DynamoDbAsyncClient getDynamoDbClient() {
+    @Bean
+    public DynamoDbAsyncClient getDynamoDbAsyncClient() {
         return DynamoDbAsyncClient
                 .builder()
                 .region(Region.US_EAST_1)

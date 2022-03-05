@@ -10,3 +10,5 @@ cloud:
       static: us-east-1
     stack:
       auto: true
+
+dynamoUrl: "https://dynamodb.us-east-1.amazonaws.com"

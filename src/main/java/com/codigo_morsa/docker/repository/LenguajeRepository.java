@@ -3,6 +3,7 @@ package com.codigo_morsa.docker.repository;
 import com.codigo_morsa.docker.model.Lenguaje;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import software.amazon.awssdk.enhanced.dynamodb.DynamoDbAsyncTable;
 import software.amazon.awssdk.enhanced.dynamodb.DynamoDbEnhancedAsyncClient;
@@ -18,6 +19,10 @@ public class LenguajeRepository {
     public LenguajeRepository(DynamoDbEnhancedAsyncClient dynamoDbClient) {
         lenguajeTable = dynamoDbClient
                 .table("lenguaje", TableSchema.fromBean(Lenguaje.class));
+    }
+
+    public Flux<Lenguaje> findAll() {
+        return Flux.from(lenguajeTable.scan().items());
     }
 
     public Mono<Lenguaje> getLenguajeByName(String name) {
