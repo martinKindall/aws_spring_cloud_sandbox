@@ -1,0 +1,17 @@
+version: '2.2'
+
+services:
+  localstack:
+    image: localstack/localstack
+    hostname: localstack
+    expose:
+      - 4566
+    ports:
+      - "4566:4566"
+    environment:
+      - SERVICES=dynamodb
+      - DEFAULT_REGION=us-east-1
+      - HOSTNAME_EXTERNAL=localstack
+    volumes:
+      - "${TMPDIR:-/tmp/localstack}:/tmp/localstack"
+      - "/var/run/docker.sock:/var/run/docker.sock"

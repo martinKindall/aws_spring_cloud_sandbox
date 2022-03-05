@@ -8,3 +8,5 @@ cloud:
       auto: false
 
 message: justAnyLocalMachine
+
+dynamoUrl: "http://localhost:4566"
