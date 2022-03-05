@@ -19,6 +19,10 @@ dependencies {
 	implementation 'io.awspring.cloud:spring-cloud-starter-aws-parameter-store-config:2.4.0'
 	implementation 'io.micrometer:micrometer-core'
 	implementation 'io.micrometer:micrometer-registry-cloudwatch2'
+
+	implementation platform('software.amazon.awssdk:bom:2.17.142')
+	implementation 'software.amazon.awssdk:dynamodb-enhanced:2.17.142'
+
 	runtimeOnly 'com.h2database:h2'
 	runtimeOnly 'io.r2dbc:r2dbc-h2'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
