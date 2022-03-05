@@ -5,10 +5,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import software.amazon.awssdk.enhanced.dynamodb.DynamoDbAsyncTable;
-import software.amazon.awssdk.enhanced.dynamodb.DynamoDbEnhancedAsyncClient;
-import software.amazon.awssdk.enhanced.dynamodb.Key;
-import software.amazon.awssdk.enhanced.dynamodb.TableSchema;
+import software.amazon.awssdk.enhanced.dynamodb.*;
+import software.amazon.awssdk.enhanced.dynamodb.model.PutItemEnhancedRequest;
+
+import java.util.Map;
 
 @Repository
 public class LenguajeRepository {
@@ -27,6 +27,19 @@ public class LenguajeRepository {
 
     public Mono<Lenguaje> getLenguajeByName(String name) {
         return Mono.fromFuture(lenguajeTable.getItem(getKeyBuild(name)));
+    }
+
+    public Mono<Void> saveLenguaje(Lenguaje lenguaje) {
+        var request = PutItemEnhancedRequest
+                .builder(Lenguaje.class)
+                .item(lenguaje)
+                .conditionExpression(
+                        Expression.builder()
+                                .expression("attribute_not_exists(#name)")
+                                .expressionNames(Map.of("#name", "name"))
+                                .build())
+                .build();
+        return Mono.fromFuture(lenguajeTable.putItem(request));
     }
 
     private Key getKeyBuild(String name) {
