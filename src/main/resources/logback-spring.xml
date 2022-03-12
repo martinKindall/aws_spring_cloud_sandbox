@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
 
-    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
-
     <springProfile name="default | local">
         <property name="LOGS_FOLDER" value="./logs" />
         <property name="FILE_PATH" value="${LOGS_FOLDER}/java-aws-logging-local.log" />
@@ -26,7 +24,7 @@
     <appender name="Console"
               class="ch.qos.logback.core.ConsoleAppender">
         <layout class="ch.qos.logback.classic.PatternLayout">
-            <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+            <pattern>%black(%d{ISO8601}) %highlight(%-5level) [%blue(%t)] %yellow(%C{1.}): %msg%n%throwable</pattern>
         </layout>
     </appender>
 
@@ -34,7 +32,7 @@
               class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${FILE_PATH}</file>
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-            <pattern>${FILE_LOG_PATTERN}</pattern>
+            <pattern>%d %p %C{1.} [%t] %m%n</pattern>
         </encoder>
 
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
