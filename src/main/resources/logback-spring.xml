@@ -7,7 +7,7 @@
     </springProfile>
 
     <springProfile name="docker">
-        <property name="LOGS_FOLDER" value="/home/ec2-user/java-aws/logs" />
+        <property name="LOGS_FOLDER" value="/app_logs" />
     </springProfile>
 
     <springProfile name="docker">
@@ -75,7 +75,7 @@
         </springProfile>
     </root>
 
-    <logger name="com.baeldung" additivity="false">
+    <logger name="com.codigo_morsa" additivity="false">
         <springProfile name="default | local">
             <appender-ref ref="Console" />
             <appender-ref ref="RollingFile" />
