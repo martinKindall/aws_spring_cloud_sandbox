@@ -76,11 +76,8 @@
     </root>
 
     <logger name="com.codigo_morsa" additivity="false">
-        <springProfile name="default | local">
+        <springProfile name="default | local | docker">
             <appender-ref ref="Console" />
-            <appender-ref ref="RollingFile" />
-        </springProfile>
-        <springProfile name="docker">
             <appender-ref ref="RollingFile" />
         </springProfile>
     </logger>

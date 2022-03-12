@@ -1,8 +1,3 @@
-logging:
-  level:
-    com:
-      codigo_morsa: INFO
-
 spring:
   config:
     import: "aws-parameterstore:"
@@ -17,3 +12,8 @@ cloud:
       auto: true
 
 dynamoUrl: "https://dynamodb.us-east-1.amazonaws.com"
+
+logging:
+  level:
+    com:
+      codigo_morsa: INFO
