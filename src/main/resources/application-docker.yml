@@ -1,3 +1,8 @@
+logging:
+  level:
+    com:
+      codigo_morsa: INFO
+
 spring:
   config:
     import: "aws-parameterstore:"
