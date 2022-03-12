@@ -49,4 +49,14 @@ public class Controller {
     public Mono<Map<String, String>> getConfigMessage() {
         return Mono.just(Map.of("message", "Here comes a message from AWS Param Store: " + message));
     }
+
+    @GetMapping("/launchException")
+    public Mono<Map<String, String>> triggerException() {
+        throw new RuntimeException("Oops, something unexpected happened.");
+    }
+
+    @GetMapping("/launchException2")
+    public Mono<Map<String, String>> triggerException2() {
+        throw new ArithmeticException("Cannot divide by 0");
+    }
 }
