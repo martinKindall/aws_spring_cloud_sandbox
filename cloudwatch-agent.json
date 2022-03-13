@@ -1,0 +1,24 @@
+{
+  "logs": {
+    "logs_collected": {
+      "files": {
+        "collect_list": [
+          {
+            "file_path": "/home/ec2-user/app_logs/*-docker.log",
+            "log_group_name": "spring-aws-prod-logging",
+            "log_stream_name": "spring-aws-prod-logging-{instance_id}.log",
+            "timestamp_format": "%Y-%m-%d %H:%M:%S.%f",
+            "multi_line_start_pattern": "{timestamp_format}"
+          },
+          {
+            "file_path": "/home/ec2-user/app_logs/*-dev.log",
+            "log_group_name": "spring-aws-dev-logging",
+            "log_stream_name": "spring-aws-dev-logging-{instance_id}.log",
+            "timestamp_format": "%Y-%m-%d %H:%M:%S.%f",
+            "multi_line_start_pattern": "{timestamp_format}"
+          }
+        ]
+      }
+    }
+  }
+}
