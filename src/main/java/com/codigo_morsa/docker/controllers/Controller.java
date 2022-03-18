@@ -22,6 +22,9 @@ public class Controller {
     @Value("${message}")
     private String message;
 
+    @Value("${serverId}")
+    private String serverId;
+
     private final CustomerService customerService;
 
     @Autowired
@@ -48,6 +51,11 @@ public class Controller {
     @GetMapping("/config")
     public Mono<Map<String, String>> getConfigMessage() {
         return Mono.just(Map.of("message", "Here comes a message from AWS Param Store: " + message));
+    }
+
+    @GetMapping("/serverId")
+    public Mono<Map<String, String>> getServerId() {
+        return Mono.just(Map.of("message", "You are running on the server: " + serverId));
     }
 
     @GetMapping("/launchException")

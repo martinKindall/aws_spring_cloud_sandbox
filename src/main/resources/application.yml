@@ -11,6 +11,8 @@ message: justAnyLocalMachine
 
 dynamoUrl: "http://localhost:4566"
 
+serverId: "local"
+
 logging:
   level:
     com:
