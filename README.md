@@ -34,9 +34,21 @@ Feel free to push the image to another repo like Docker Hub and to name it howev
 
 ## Testing the image in a EC2 instance
 
-A plain EC2 instance with Amazon Linux 2 is enough to test this.
-Just install docker [in the EC2](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/docker-basics.html).
-Then pull the image and run a container.
+A plain EC2 instance with Amazon Linux 2 and docker installed is enough to test this. 
+
+- Approach A (Recommended)
+  - Create an AMI out of Amazon Linux 2 with docker
+  - Launch an EC2 instance from this custom AMI
+  - Assign appropiate IAM Role for SSM Param store, Cloudwatch put-metric/put-logs/... and eventually DynamoDB read/write.
+  - Use aws/user_data.txt as the boot script when launching an EC2 instance
+- Approach B
+  - Launch an EC2 instance from default Amazon Linux 2
+  - Assign appropiate IAM Role (permissions above)
+  - Connect to it via ssh or AWS Console
+  - Install docker manually
+  - Execute 1 by 1 each command at aws/user_data.txt
+
+To install docker manually [in the EC2](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/docker-basics.html).
 
 ### Instance Profile Authentication
 
