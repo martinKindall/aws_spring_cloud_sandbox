@@ -1,0 +1,9 @@
+#!/bin/bash
+service docker start
+docker pull public.ecr.aws/f5n7q8r5/aws-spring-param-store
+mkdir ~/app_logs
+chmod -R 777 ~/app_logs
+docker run -p 80:8080 --name testB -d \
+-v ~/app_logs:/app_logs \
+--env serverId=$(hostname -f) \
+public.ecr.aws/f5n7q8r5/aws-spring-param-store
