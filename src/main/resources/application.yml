@@ -1,6 +1,12 @@
 spring:
   application:
     name: myapplication
+  security:
+    oauth2:
+      client:
+        provider:
+          cognito:
+            issuerUri: https://cognito-idp.us-east-1.amazonaws.com/us-east-1_vLvD5n28f
 
 cloud:
   aws:
