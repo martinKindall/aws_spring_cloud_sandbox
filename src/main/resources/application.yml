@@ -6,6 +6,7 @@ spring:
       client:
         provider:
           cognito:
+            audience: 5v8hql2lrvd8ob25j27j0vmbah
             issuerUri: https://cognito-idp.us-east-1.amazonaws.com/us-east-1_vLvD5n28f
 
 cloud:
