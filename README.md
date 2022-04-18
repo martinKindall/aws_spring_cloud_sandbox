@@ -12,6 +12,7 @@ First, build the project and generate the fat JAR in build/libs (just run gradle
 
 Then execute:
 ````bash
+mkdir build/dependency
 cd build/dependency
 jar -xf ../libs/*.jar
 ````
