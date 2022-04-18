@@ -1,4 +1,4 @@
-FROM openjdk:11-jre-slim
+FROM 371417955885.dkr.ecr.us-east-1.amazonaws.com/11.0.4-jre-slim:v1
 RUN adduser --system --group spring
 USER spring:spring
 ARG DEPENDENCY=build/dependency
