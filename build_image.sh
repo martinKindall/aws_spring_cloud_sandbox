@@ -1,4 +1,5 @@
 sh ./gradlew bootJar
+mkdir build/dependency
 cd build/dependency
 jar -xf ../libs/*.jar
 cd ../..
