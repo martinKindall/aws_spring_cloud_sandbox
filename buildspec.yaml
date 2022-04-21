@@ -8,11 +8,7 @@ phases:
     commands:
       - echo Build started on `date`
       - java --version
-      - echo $CODEBUILD_WEBHOOK_EVENT
-      - echo $CODEBUILD_WEBHOOK_BASE_REF
-      - echo $CODEBUILD_WEBHOOK_HEAD_REF
-      - echo $CODEBUILD_WEBHOOK_TRIGGER
-      # - sh build_image.sh
+      - sh build_image.sh
   post_build:
     commands:
       - echo Build completed on `date`
