@@ -8,7 +8,7 @@ phases:
     commands:
       - echo Build started on `date`
       - java --version
-      - sh build_image.sh
+      - bash build_image.sh
   post_build:
     commands:
       - echo Build completed on `date`
