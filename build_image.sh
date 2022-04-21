@@ -30,11 +30,11 @@ docker build -t springio/dockerize-spring-boot .
 regex="([^\/]+$)"
 TAG=$([ "$CODEBUILD_WEBHOOK_EVENT" = "PULL_REQUEST_MERGED" ] && [ "$CODEBUILD_WEBHOOK_BASE_REF" = "refs/heads/main" ] && echo "latest" || if [[ $CODEBUILD_WEBHOOK_HEAD_REF =~ $regex ]]; then echo ${BASH_REMATCH[1]}; fi)
 IMAGE_URI=public.ecr.aws/f5n7q8r5/aws-spring-param-store:$TAG
-docker tag springio/dockerize-spring-boot:latest IMAGE_URI
+docker tag springio/dockerize-spring-boot:latest $IMAGE_URI
 
 aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/f5n7q8r5
 
-docker push IMAGE_URI
+docker push $IMAGE_URI
 
 trap : 0
 
